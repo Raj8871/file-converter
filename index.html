@@ -1,380 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>File Compressor</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header>
-    <div class="menu-toggle" id="menu-toggle">
-      <span>☰ Menu</span>
-    </div>
-    <div class="options" id="options">
-      <ul>
-        <li><a href="https://raj8871.github.io/kbhdgddyegtdgyyueyeyey/">Photo Compression</a></li>
-        <li><a href="#">PDF Compression</a></li>
-        <li><a href="#">Photo to URL</a></li>
-        <li><a href="https://raj8871.github.io/resumegjgfghyfdrjhkkhfdd/">Details to Resume</a></li>
-        <li><a href="https://raj8871.github.io/pdfjpgpnghdgdusydrf/">Photo to PDF</a></li>
-        <li><a href="https://raj8871.github.io/QRksjsjshhdhdhdhd/">Link to QR</a></li>
-      </ul>
-    </div>
-    <div class="auth-section" id="auth-section">
-      <button id="login-btn">Login</button>
-      <button id="signup-btn">Sign Up</button>
-    </div>
-    <div class="user-section" id="user-section" style="display: none;">
-      <span id="welcome-message"></span>
-      <button id="logout-btn">Logout</button>
-    </div>
-  </header>
+(function () {
+  "use strict";
 
-  <!-- Hero Section -->
-  <section class="hero-section">
-    <div class="hero-content">
-      <h1>Welcome to File Compressor</h1>
-      <p>Compress your files quickly and efficiently with our easy-to-use online tools.</p>
-      <a href="#options" class="cta-button">Get Started</a>
-    </div>
-  </section>
-
-  <!-- Footer Section with Social Media Links -->
-  <footer>
-    <div class="social-media">
-      <a href="https://www.facebook.com" target="_blank">Facebook</a>
-      <a href="https://twitter.com" target="_blank">Twitter</a>
-      <a href="https://www.instagram.com" target="_blank">Instagram</a>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
-
-
-<style>
-  /* General styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  overflow-x: hidden;
-  animation: fadeIn 1s ease-out;
-}
-
-header {
-  background-color: #333;
-  color: white;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-}
-
-.menu-toggle {
-  cursor: pointer;
-  font-size: 24px;
-}
-
-.options {
-  display: none;
-  background-color: #444;
-  position: absolute;
-  top: 50px;
-  left: 0;
-  width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-.options ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.options li {
-  margin: 10px 0;
-}
-
-.options a {
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  display: block;
-}
-
-.options a:hover {
-  background-color: #555;
-  padding-left: 10px;
-}
-
-.options.show {
-  display: block;
-}
-
-/* Auth Section */
-.auth-section button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-.auth-section button:hover {
-  background-color: #45a049;
-}
-
-/* User Section */
-.user-section {
-  display: flex;
-  align-items: center;
-}
-
-.user-section span {
-  color: white;
-  margin-right: 10px;
-  font-size: 18px;
-}
-
-.user-section button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 5px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.user-section button:hover {
-  background-color: #45a049;
-}
-
-/* Hero Section */
-.hero-section {
-  background-color: #333;
-  color: white;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0 20px;
-  animation: slideIn 1s ease-out;
-}
-
-.hero-content h1 {
-  font-size: 3em;
-  margin-bottom: 10px;
-}
-
-.hero-content p {
-  font-size: 1.2em;
-  margin-bottom: 20px;
-}
-
-.cta-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 15px 30px;
-  text-decoration: none;
-  border-radius: 5px;
-  font-size: 1.2em;
-  transition: background-color 0.3s ease;
-}
-
-.cta-button:hover {
-  background-color: #45a049;
-}
-
-/* Footer Section */
-footer {
-  background-color: #333;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-
-.social-media a {
-  color: white;
-  text-decoration: none;
-  margin: 0 10px;
-}
-
-.social-media a:hover {
-  color: #4CAF50;
-}
-
-/* Page Animation */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
+  // Prevent XSS Attacks by sanitizing user inputs
+  function sanitizeInput(input) {
+    const tempDiv = document.createElement("div");
+    tempDiv.textContent = input;
+    return tempDiv.innerHTML;
   }
-  100% {
-    opacity: 1;
-  }
-}
 
-@keyframes slideIn {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
+  // Example: Sanitize all input fields automatically
+  const inputs = document.querySelectorAll("input, textarea");
+  inputs.forEach(input => {
+    input.addEventListener("input", (e) => {
+      e.target.value = sanitizeInput(e.target.value);
+    });
+  });
 
-</style>
+  // Disable right-click to prevent unauthorized access
+  document.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+    console.warn("Right-click is disabled to enhance security.");
+  });
 
-<script>
-  // Variables
-const menuToggle = document.getElementById('menu-toggle');
-const options = document.getElementById('options');
-const loginBtn = document.getElementById('login-btn');
-const signupBtn = document.getElementById('signup-btn');
-const authSection = document.getElementById('auth-section');
-const userSection = document.getElementById('user-section');
-const welcomeMessage = document.getElementById('welcome-message');
-const logoutBtn = document.getElementById('logout-btn');
+  // Prevent debugging tools (like F12/DevTools)
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "F12" || (e.ctrlKey && e.shiftKey && e.key === "I")) {
+      e.preventDefault();
+      console.warn("Developer tools are disabled.");
+    }
+  });
 
-// Simulating User Database
-const usersDatabase = {};
-
-// Event Listener for Menu Toggle
-menuToggle.addEventListener('click', () => {
-  options.classList.toggle('show');
-});
-
-// Login Functionality
-loginBtn.addEventListener('click', () => {
-  const username = prompt('Enter Username:');
-  const password = prompt('Enter Password:');
-
-  // Check if the user exists in the "database"
-  if (usersDatabase[username] && usersDatabase[username].password === password) {
-    authSection.style.display = 'none';
-    userSection.style.display = 'flex';
-    welcomeMessage.textContent = `Welcome back, ${username}!`;
-  } else {
-    alert('Invalid username or password!');
-  }
-});
-
-// Sign Up Functionality
-signupBtn.addEventListener('click', () => {
-  const username = prompt('Enter a Username:');
-  const password = prompt('Enter a Password:');
-  
-  // Save the new user to the "database"
-  usersDatabase[username] = { password: password };
-  
-  alert('Sign Up successful! You can now log in.');
-  // Automatically log in after sign-up
-  loginBtn.click();
-});
-
-// Logout Functionality
-logoutBtn.addEventListener('click', () => {
-  authSection.style.display = 'block';
-  userSection.style.display = 'none';
-  alert('You have been logged out.');
-});
-
-function dataURLToBlob(dataURL) {
-      const parts = dataURL.split(',');
-      const byteString = atob(parts[1]);
-      const mimeString = parts[0].split(':')[1].split(';')[0];
-
-      const arrayBuffer = new ArrayBuffer(byteString.length);
-      const uint8Array = new Uint8Array(arrayBuffer);
-      for (let i = 0; i < byteString.length; i++) {
-        uint8Array[i] = byteString.charCodeAt(i);
+  // Monitor DOM changes for suspicious activity
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.addedNodes.length > 0) {
+        mutation.addedNodes.forEach(node => {
+          if (node.nodeType === 1 && node.tagName === "SCRIPT") {
+            console.error("Unauthorized script detected and removed!");
+            node.remove();
+          }
+        });
       }
-      return new Blob([uint8Array], { type: mimeString });
-    }
-    document.getElementById('photo-input').addEventListener('change', function (event) {
-    const file = event.target.files[0];
+    });
+  });
 
-    if (!file) {
-        alert('No file selected');
-        return;
-    }
+  observer.observe(document.body, { childList: true, subtree: true });
 
-    // Step 1: Check file type (Only allow images)
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
-    if (!allowedTypes.includes(file.type)) {
-        alert('Invalid file type! Please upload a valid image file (JPEG, PNG, GIF, WEBP).');
-        event.target.value = ''; // Reset the file input
-        return;
-    }
+  // Secure cookies
+  document.cookie = "SecureCookie=SecureValue; Secure; HttpOnly; SameSite=Strict";
 
-    // Step 2: Check file size (Limit to 200MB or less)
-    const maxSizeMB = 200; // 200MB max
-    const maxSizeBytes = maxSizeMB * 1024 * 1024;
-    if (file.size > maxSizeBytes) {
-        alert(`File is too large! Please upload a file smaller than ${maxSizeMB} MB.`);
-        event.target.value = ''; // Reset the file input
-        return;
-    }
-
-    // Step 3: Prevent harmful script execution in files
-    // We'll use a simple heuristic to check if the file could contain executable content.
-    const reader = new FileReader();
-    reader.onload = function (e) {
-        const data = e.target.result;
-
-        // Step 3a: Check for potential harmful content by looking for suspicious signatures in the binary data (e.g., JavaScript or executable code).
-        if (data.includes('<script') || data.includes('javascript:') || data.includes('data:text/html')) {
-            alert('The uploaded file contains potentially dangerous content and cannot be uploaded.');
-            event.target.value = ''; // Reset the file input
-            return;
-        }
-
-        // Step 3b: Optionally, check for file signatures in image headers (to ensure it's a valid image).
-        if (!isValidImageSignature(data)) {
-            alert('Invalid image file signature detected! The file may be corrupted or tampered with.');
-            event.target.value = ''; // Reset the file input
-            return;
-        }
-
-        // The file appears to be safe, allow further processing or upload.
-        console.log('File is safe and ready to be uploaded or processed.');
-    };
-    reader.readAsArrayBuffer(file);
-});
-
-// Helper function to check the validity of image file signatures (for additional security)
-function isValidImageSignature(data) {
-    // Check for valid image header (JPEG, PNG, GIF, etc.)
-    // This is just a basic check for common image signatures.
-    const jpgSignature = new Uint8Array([0xFF, 0xD8, 0xFF]);
-    const pngSignature = new Uint8Array([0x89, 0x50, 0x4E, 0x47]);
-    const gifSignature = new Uint8Array([0x47, 0x49, 0x46]);
-
-    const dataArray = new Uint8Array(data.slice(0, 4));
-
-    if (dataArray[0] === jpgSignature[0] && dataArray[1] === jpgSignature[1] && dataArray[2] === jpgSignature[2]) {
-        return true; // JPEG signature valid
-    }
-    if (dataArray[0] === pngSignature[0] && dataArray[1] === pngSignature[1] && dataArray[2] === pngSignature[2] && dataArray[3] === pngSignature[3]) {
-        return true; // PNG signature valid
-    }
-    if (dataArray[0] === gifSignature[0] && dataArray[1] === gifSignature[1] && dataArray[2] === gifSignature[2]) {
-        return true; // GIF signature valid
-    }
-
-    return false; // Invalid signature, not a valid image format
-}
-
-</script>
+  console.log("Basic security measures are active on this website.");
+})();
